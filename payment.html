@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | 1mg</title>
+    <link rel="shortcut icon"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBmBrwcvhTRneBMR3UZua9Is46Pl33fMMvdkhB86BC0WEkyxpI9FYnNBp2aSwDEvdpQw0&usqp=CAU" alt="logo">
+    <link rel="stylesheet" href="./styles/payment.css">
+</head>
+<body>
+    <div id="payment_navbar">
+        <div id="logo">
+        
+            <a href="./index.html">
+
+                <img src="https://www.1mg.com/images/tata_1mg_logo.svg" alt="">
+            </a>            
+        </div>
+    </div>
+    <div id="page">
+        
+    </div>
+    <div id="white">
+        <div id="left">
+            Select a payment method
+            <br>
+            <button  id="debitcard">Credit/Debit Card</button>
+            <br>
+            <hr>
+            <button id="netbanking">Netbanking</button>
+            <br>
+            <hr>
+            <button id="wallet">Wallet</button>
+        </div>
+        <div  id="right">
+            <h3>pay with credit/Debit card</h3>
+            <label for="">Card Number</label>
+            <br>
+            <input id="input" type="number" placeholder="Enter card number">
+            <br>
+            <br>
+            <div id="expiry-cvv-div">
+                <label for="">Expiry Date</label>
+                <input id="input-exp" type="" placeholder="MM/YY">
+                <br>
+                <label for="">CVV</label> <br>
+                <input id="input-cvv" type="password" name="" id="" placeholder="***">
+                <br>
+            </div>
+                <br>
+                <label for="">Cardholder's Name</label>
+                <br>
+                <input id="input" type="text" name="" id="">
+                <br>
+
+                <button id="paynow">PAY NOW</button>
+                <br>
+                <button id="cancelpay">Cancel Payment</button>
+                <br>
+                <div id="poweredby">
+                <a href="https://razorpay.com/">powered by <img id="razorpay-img" src="https://cdn.razorpay.com/logo.svg" alt=""></a>
+                </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+<script>
+
+    let paynow = document.getElementById("paynow");
+    paynow.addEventListener('click',function(){
+        paynowFunc();
+    }) 
+
+
+
+
+function paynowFunc(){
+    let input = document.getElementById("input").value;
+    if(input.length < 9){
+        alert('Incorrect Card Number');
+
+    }else{
+        window.location.href = "otp.html";
+    }
+}
+
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBmBrwcvhTRneBMR3UZua9Is46Pl33fMMvdkhB86BC0WEkyxpI9FYnNBp2aSwDEvdpQw0&usqp=CAU" alt="logo">
+
+    <title>Otp | 1mg</title>
+
+    <style>
+        body{
+    background-color: whitesmoke;
+}
+#brown{
+    
+    background-color: #ff6f61;
+    height: 150px;
+
+}
+#Otp_inp{
+/* border: 1px solid red; */
+margin: auto;
+width: 20%;
+margin-top: 10%;
+}
+    </style>
+</head>
+<body>
+    <div id="brown">
+        <div id="logo">
+        
+            <a href="./index.html">
+
+                <img src="https://www.1mg.com/images/tata_1mg_logo.svg" alt="">
+            </a>            
+        </div>
+    </div>
+    <div id="Otp_inp">
+        <input type="password" placeholder="Enter OTP" id="otp_input">
+        <button onclick="Submit()">Submit</button>
+    </div>
+</body>
+</html>
+
+<script>
+
+setTimeout(() =>{
+            alert("OTP has sent to your Registered Mobile");
+        },1000)
+
+
+    function Submit(){
+    let otp = document.getElementById("otp_input").value;
+
+        
+
+    if(otp.length < 4){
+        alert("Incorrect OTP");
+    }else{
+
+        alert("Your Transaction is Being Processed");
+
+        setTimeout(() =>{
+            alert("Payment Sucessful")
+        },3000);
+        
+
+        setTimeout(()=>{
+            alert("Order has been Placed");
+        },5000)
+
+        setTimeout(()=>{
+            alert("Thanks for your Order. Stay safe ");
+            window.location.href = "home.html";
+        },8000)
+        
+    }
+    }
+
+</script>

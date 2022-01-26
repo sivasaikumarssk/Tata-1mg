@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | 1mg</title>
+    <link rel="shortcut icon"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBmBrwcvhTRneBMR3UZua9Is46Pl33fMMvdkhB86BC0WEkyxpI9FYnNBp2aSwDEvdpQw0&usqp=CAU" alt="logo">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/cart.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="cart_navbar">
+        <div class="cartpage_tata_logo">
+            <div id="name">
+                <a href="./index.html">
+        
+                    <img src="https://www.1mg.com/images/tata_1mg_logo.svg" alt="">
+
+                </a>
+            </div>
+        </div>
+        <div class="cartpage_search">
+           
+             <input placeholder="Search for Medicines" class="medicine_search" type="text" >  
+                <div id="search_icon">
+                    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXI_JyOVRGL5fOKjn9qMUF3pWkgFcfDm1oQ&usqp=CAU" alt="">
+                </div>
+        </div>
+        
+        <div class="needhelp">
+            Need Help?
+        </div>
+    </div>
+
+    <div id="cart_div">
+        <div id="cart_products">
+
+        </div>
+        <div id="cart_desc">
+            <div id="items_total"></div>
+            <div id="shipping_fee"></div>
+            <div id="safety_handle_fee"></div>
+            <div id="to_be_paid"></div> 
+            <button id="checkoutBtn">CHECKOUT</button>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+</body>
+</html>
+
+<script type="module">
+
+
+
+let cart_div = document.getElementById("cart_div") 
+
+let cart_img = document.getElementById("cart_products") 
+
+let quant = 1;
+
+let cart = JSON.parse(localStorage.getItem('finalCart')) || [];
+console.log('cart:', cart)
+
+function product(cart){
+    cart_img.innerHTML = ""
+    cart.map(function(el){
+    //console.log('cart:', cart)
+   
+
+        let div = document.createElement('div');
+        div.setAttribute('id','cartProducts')
+
+        let image = document.createElement("img")
+        image.src = el.url;
+
+        let name = document.createElement("p");
+        name.textContent =`Tab : ${el.name}` ;
+        
+        let desc = document.createElement("small") 
+        desc.textContent = el.small
+
+        let price = document.createElement("p");
+        price.innerHTML = `Price:₹ ${el.price}/-`;
+        //console.log('price:', el.price)
+
+        let ratings = document.createElement("p") 
+        ratings.textContent = `Ratings : ${el.rating}`
+
+        let button = document.createElement("button");
+        button.textContent = "Remove";
+        button.setAttribute('id',"removeBtn");
+
+        button.addEventListener('click',function(){
+            removeFunc()
+        })
+
+        let increase = document.createElement("button");
+        increase.textContent = "+";
+        increase.setAttribute('id',"incr");
+
+        increase.addEventListener('click',function(){
+            incFunc()
+        })
+
+        let quantity = document.createElement("p");
+        quantity.textContent = quant;
+        
+
+        let decrease = document.createElement("button");
+        decrease.textContent = "-";
+        decrease.setAttribute('id',"decr");
+
+        decrease.addEventListener('click',function(){
+            decFunc()
+
+        })
+        let count = document.createElement("p");
+        
+
+        div.append(image,name,desc,ratings,price,button,increase,quant,decrease);
+
+        cart_img.append(div);
+        
+    })
+}
+product(cart)
+
+
+
+//remove function
+
+function removeFunc(index,el){
+
+    cart.splice(index,1);
+
+    localStorage.setItem("finalCart",JSON.stringify(cart));
+    
+    product(cart);    
+    
+}
+
+// right description function
+let cart_details = document.getElementById("cart_desc")
+
+
+let mrpArray = []
+
+//let mrp = document.createElement("p")
+
+function cartDesc(cart){
+
+    cart.map(function(el){
+
+    let div = document.createElement('div')
+    
+    div.setAttribute('id','items_div')
+
+    mrpArray.push(el.price);
+
+    })
+
+    let mrptotal = mrpArray.reduce(function(acc,cv){
+    return acc+Number(cv)
+},0);
+
+//console.log('total:', total)
+let pay = []
+
+let mrp = document.createElement("p");
+mrp.textContent = `Item Total(MRP) :₹ ${mrptotal}`
+
+let shipping = document.getElementById('shipping_fee');
+
+shipping.textContent = `Extended shipping Fee - ₹ 20`;
+
+let safety_fee = document.getElementById("safety_handle_fee");
+
+safety_fee.textContent = `Safety handling Fee - ₹ 10`;
+
+items_total.append(mrp);
+
+let toBePaid = document.getElementById('to_be_paid');
+
+    toBePaid.textContent = `To be Paid -${mrptotal+20+10}`;
+
+    pay.push(toBePaid)
+    localStorage.setItem('tobepaid',JSON.stringify(pay));
+
+let checkout = document.getElementById("checkoutBtn"); 
+   checkout.addEventListener('click',function(){
+        checkoutFunc();
+    });
+
+}
+cartDesc(cart)
+
+//console.log('ssk',mrpArray)
+
+let footer_div = document.getElementById("footer");
+
+import footer from "./components/footer.js";
+
+footer_div.innerHTML = footer();
+
+function checkoutFunc(){
+
+    window.location.href = "payment.html";
+
+}
+
+
+</script>
+
+

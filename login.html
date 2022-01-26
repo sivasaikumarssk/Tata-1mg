@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main{
+        display: flex;
+    }
+    #main div{
+        flex: 1;
+    }
+    form{
+        width: 20%;
+    }
+    #register{
+        border: 1px solid red;
+        padding-left: 10%; 
+        text-align: center;
+        align-items: center;
+        line-height: 30px;
+        background-color: rgb(230, 228, 228);
+
+    }
+    #login{
+        border: 1px solid red;
+        padding-left: 10%;
+        line-height: 30px;
+        text-align: center;
+        align-items: center;
+        background-color: rgb(230, 228, 228);
+        
+    }
+    #logo_background{
+        background-color: #ff6f61;
+        padding-left: 10px;
+        margin-bottom: 50px;
+       
+    }
+</style>
+<body>
+    <div id="logo_background">
+        <div id="logo">
+        
+            <a href="./index.html">
+
+                <img src="https://www.1mg.com/images/tata_1mg_logo.svg" alt="">
+            </a>            
+        </div>
+    </div>
+
+
+    <div id="main">
+        <div id="register">
+            <form  onsubmit="Register(event)">
+                <h1>register</h1>
+                
+                <input id="name" placeholder="Enter your name" type="text">
+                <input type="email" placeholder="Enter email" id="email">
+                <input type="text" placeholder="Enter username" id="username">
+                <input type="password" placeholder="Enter your password" id="password">
+
+                <input type="number" placeholder="Enter your Number" id="mobile">
+
+                <input type="text" placeholder="description (optional)" id="description">
+
+                <input type="submit">
+            </form>
+        </div>
+        <div id="login">
+            <form  onsubmit="login(event)">
+                <h1>log in</h1>
+               
+                <input type="text" placeholder="Enter your username" id="username_login">
+                <input type="password" placeholder="Enter your password" id="password_login">
+                <input type="submit">
+                
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+
+
+async function Register(e){
+    try{
+
+        e.preventDefault();
+    
+
+    var register_data = {
+
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        mobile: document.getElementById("mobile").value,
+        username: document.getElementById("username").value,
+        description: document.getElementById("description").value,
+    };
+
+    register_data = JSON.stringify(register_data);
+    console.log("register_data:",register_data);
+
+
+    } catch(error){
+        console.log("error:",error);
+    }
+
+    let reg_api = `https://masai-api-mocker.herokuapp.com/auth/register`;
+
+
+    let response = await fetch(reg_api, {
+
+        method:'POST',
+
+        body:register_data,
+
+
+        headers:{
+            "Content-Type":"application/json",
+        },
+    });
+
+    let data = await response.json();
+    console.log("data:",data);
+
+
+    if(data.error === true){
+        alert("user already exist");
+
+    }
+    else{
+        alert("registration successful");
+    }
+
+   
+}
+
+
+
+async function login(e){
+    e.preventDefault();
+
+    let login_data = {
+
+        username: document.getElementById("username_login").value,
+        password: document.getElementById("password_login").value,
+    };
+
+    login_data = JSON.stringify(login_data)
+    let login_url =`https://masai-api-mocker.herokuapp.com/auth/login
+`
+
+    let response = await fetch(login_url, {
+
+        method:'POST',
+
+        body: login_data,
+
+        headers:{
+            "Content-Type":"application/json",
+        },
+    });
+
+    let data = await response.json();
+    console.log("data:",data);
+
+    let username = document.getElementById("username_login").value;
+
+    getUser(username, data.token);
+}
+
+
+async function getUser(username, token){
+    let api = `https://masai-api-mocker.herokuapp.com/user/${username}`;
+
+    let response = await fetch(api, {
+
+        headers: {
+
+            "Content-Type" : "application/json",
+            Authorization: `Bearer ${token}`,
+
+        },
+
+       
+    });
+
+    let data = await response.json();
+    console.log("data:", data);
+
+    if(data.error === true){
+        alert("Incorrect username or password");
+    }
+    else{
+        alert("login successful")
+        window.location.href = "home.html"
+    }
+}
+
+</script>

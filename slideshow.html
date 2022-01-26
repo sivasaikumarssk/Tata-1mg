@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="url">
+    <button onclick="storeImages()">save</button>
+</body>
+</html>
+
+<script>
+    function storeImages(){
+        let url = document.getElementById("url").value;
+
+        let image_arr =JSON.parse(localStorage.getItem("images"));
+            if(image_arr == null ){
+                image_arr = [];
+            }
+        image_arr.push(url);
+
+        localStorage.setItem("images", JSON.stringify(image_arr))
+    }
+</script>

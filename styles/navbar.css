@@ -1,0 +1,520 @@
+*{
+    font-family: "Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+   background-color: whitesmoke;
+}
+
+
+ a{
+     text-decoration: none;
+     color: black;
+
+ }
+ a:hover{
+    color: #ff6f61;
+ }
+ #navbar{
+     /* border: 1px solid red; */
+     display: flex;
+     justify-content: space-between;
+    
+ }
+ #name{
+     /* border: 1px solid red; */
+     width: 0%;
+
+     
+ }
+ #navbar_left{
+     /* border: 1px solid blue; */
+     padding-top: 10px;
+    width: 55%;
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+   font-size: medium;
+ }
+ #navbar_right{
+    /* border: 1px solid blue; */
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+    padding-top: 10px;
+ }
+
+ #account_img{
+    /* border: 1px solid black; */
+    height: 25px;
+    width: 25px;
+   
+ }
+/*----------dropdown css-----------*/
+ .dropdown{
+   position: relative;
+   display: inline-block;
+}
+ .drop_content{
+    margin-left: 10px;
+    min-width: 250px;
+    line-height: 30px;
+    display: none;
+    background-color: whitesmoke;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+   position: absolute;
+ }
+ .dropdown:hover .drop_content {
+   display: inline-block;
+ }
+.drop_content:hover{
+   background-color: whitesmoke;
+}
+/*------------------------------------------------*/
+
+ #cart_icon{
+     /* border: 1px solid black; */
+    width: 25px;
+ }
+ #cart_count{
+    position: absolute;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    padding: 1px;
+    right: 115px;
+    bottom: 95%;
+    width: 10px;
+ }
+ #span_red{
+    background-color: #ff6f61;
+    color: white;
+    font-size: small;
+    padding: 3px;
+ }
+
+ /*below*/
+
+
+ #below{
+   /* border: 1px solid red; */
+   height: 30px;
+   width: 90%;
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   
+}
+#inp{
+   width: 60%;
+   gap: 0px;
+   display: flex;
+}
+#location{
+   border: 1px solid #f1f4f6;
+    background-color: #f1f4f6
+}
+#medicine_search{
+   width: 70%;
+   border: 1px solid #f1f4f6;
+   background-color: #f1f4f6
+}
+#search_icon img{
+   /* border: 1px solid red; */
+   margin-top: 0px;
+   width: 50px;
+   border: transparent;
+   background-color: #dae0e4;
+}
+#upload{
+   background-color: #ff6f61;
+   color: white;
+   border: transparent;
+   height: 35px;
+   width: 100px;
+}
+#Quick_upload{
+   padding-right: 30px;
+}
+
+.list{
+   /* border: 1px solid red; */
+   padding: 10px;
+   padding-left: 15px;
+   margin-top: 10px;
+   height: 30px;
+   display: grid;
+   grid-template-columns: auto auto auto auto auto auto auto auto auto auto ;
+   font-size: small;
+}
+@media (min-width:400px) and (max-width:800px) {
+   .list{
+      /* border: 1px solid red; */
+      padding: 10px;
+      padding-left: 15px;
+      margin-top: 10px;
+      height: 30px;
+      display: grid;
+      grid-template-columns: auto auto auto ;
+      font-size: small;
+      position:relative;
+   }
+}
+#drop_down_img img{
+   margin-top: 2px;
+   width: 8%;
+}
+
+/* -------- dropdown content css start ---------- */
+
+.dropdown_1{
+   position: relative;
+   display: inline-block;
+}
+.dropContent{
+   margin-left: 10px;
+    min-width: 350px;
+    line-height: 30px;
+    display: none;
+    background-color: whitesmoke;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+   position: absolute;
+   font-weight: bold;
+   padding: 5px;
+}
+.dropdown_1:hover .dropContent{
+   display: inline-block;
+}
+
+.row{
+   display: grid;
+   grid-template-columns: auto  auto;
+   grid-gap: 20px;
+}
+.subCategories{
+   font-weight: lighter;
+}
+/*--------------dropdown content css end-------------------*/
+
+/*...........slideshow start...........*/
+#slide_box{
+   display: grid;
+   grid-template-columns: auto auto;
+   gap: 40%;
+   border: 1px solid rgb(199, 194, 194);;
+   height: 300px;
+   
+   
+}
+#slideshow{
+   /* border: 1px solid blue; */
+   height: 300px;
+   width: 240%;
+}
+#slideimg{
+   width: 100%;
+   height: 300px;
+}
+#simage{
+   align-content: right;
+   /* border: 1px solid green; */
+   height: 300px;
+   width: 100%;
+   height: 300px;
+}
+#simgid{
+   height: 300px;
+   width: 100%;
+   cursor: pointer;
+}
+
+@media (min-width:800px) and (max-width:1200px) {
+
+   #slide_box {
+   display: grid;
+   grid-template-columns: auto ;
+   gap: 40%;
+   border: 1px solid rgb(199, 194, 194);;
+   height: 300px;
+   
+   
+}
+}
+/*..........slideshow end............*/
+
+#tata_text{
+   color: #666;
+   padding-top: 20px;
+   text-align: center;
+   font-size: x-large;
+   margin-bottom: 20px;
+}
+
+#careplan_img{
+   border: 1px solid black;
+   margin-left: 8%;
+   width: 85%;
+   height: 100px;
+   cursor: pointer;
+}
+h4{
+   background-color: white;
+}
+#bodyHealthchekup{
+  
+   width: 100%;
+   height: 200px;
+   display: flex;
+   background-color: white;
+}
+#body_details{
+   background-color: white;
+width: 23%;
+margin-left: 2%;
+padding: 5px;
+}
+#body_details:hover{
+   cursor: pointer;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#star_content {
+   display: flex;
+   background-color: white;
+
+}
+#tata_log{
+   width: 50%;
+   background-color: white;
+}
+#star{
+   border: 1px solid transparent;
+   width: 15%;
+   height: 20px;
+   background-color: #4dc95c;
+   color: #fff;
+   text-align: center;
+   padding: 1px;
+   margin-top: 10px;
+   display: inline-block;
+}
+#star  img{
+   width:40%;
+}
+#rates{
+   display: flex;
+   gap: 20px;
+   background-color: white;
+}
+.strikeThrough{
+   text-decoration: line-through;
+   background-color: white;
+   font-size: 13px;
+}
+.off{
+   border: 1px solid #1aab2a;
+   color: #1aab2a;
+   background-color: rgba(26,171,42,.05);
+   font-size: x-small;
+   padding: 5px;
+   background-color: white;
+}
+
+
+/*-------brands css-----------*/
+
+.brands{
+   display: grid;
+   background-color: white;
+   width: 100%;
+   height: 150px;
+   grid-template-columns: auto auto auto auto auto auto auto;
+   padding: 5px;
+   
+}
+@media  (min-width:400px) and (max-width:800px) {
+   
+   .brands{
+      display: grid;
+      grid-template-columns: auto auto auto;
+      overflow: scroll;
+   }
+
+   .brands img:hover{
+      cursor: pointer;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   
+   }
+
+   #Tata_products{
+      /* border: 1px solid red; */
+      height: 905px;
+      overflow:scroll;
+      display: grid;
+      grid-template-columns: auto;
+      
+   }
+   #Tata_products img{
+      width: 30%;
+   }
+   #Tata_products div{
+     
+      padding: 10px;
+      width: 90%;
+      height: 350px;
+      text-overflow:clip;
+   }
+   
+   #Tata_products div:hover{
+      
+   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+   cursor: pointer;
+   
+   }
+
+
+
+
+
+}
+.brands img:hover{
+   cursor: pointer;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+
+/*--------tata products css---------------*/
+
+#Tata_products{
+   /* border: 1px solid red; */
+   height: 905px;
+   overflow:scroll;
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   
+}
+#Tata_products img{
+   width: 30%;
+}
+#Tata_products div{
+  
+   padding: 10px;
+   width: 90%;
+   height: 350px;
+   text-overflow:clip;
+}
+
+#Tata_products div:hover{
+   
+box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+cursor: pointer;
+
+}
+#add_to_cart{
+   background-color: #ff6f61;
+   color: white;
+   cursor: pointer;
+   border: transparent;
+   height: 30px;
+}
+
+/*--------tata products css end---------------*/
+
+
+
+/*--------------footer---------------*/
+   #footer_div{
+      position: sticky;
+   }
+   #footer{
+       /* border: 1px solid red; */
+       height: 600px;
+       position: sticky;
+   }
+   #stats{
+       /* border: 1px solid green; */
+       height: 50px;
+       text-align: center;
+       
+   }
+   h2{
+       font-weight: normal;
+   }
+   #count_of_customers{
+       /* border: 1px solid black; */
+       height: 120px;
+       width: 60%;
+       margin: auto;
+       display: flex;
+       padding-left: 20px;
+       justify-content: space-between;
+   }
+   #link_to_download{
+       /* border: 1px solid green; */
+       text-align: center;
+       font-size: larger;
+   }
+   #input{
+       padding:10px;
+       background-color: #f1f4f6;
+       width: 20%;
+       border: transparent;
+   }
+   #send{
+       padding: 10px;
+       background-color: #ff6f61;
+       height: 40px;
+       width: 100px;
+       border: transparent;
+       border-radius: 5px;
+       cursor: pointer;
+   }
+   #footer_text{
+       /* border: 1px solid orange; */
+       height: 460px;
+       
+       background-color: #fffcf8;
+   }
+   #mainlink_bar{
+       /* border: 1px solid black; */
+       height: 250px;
+       display: flex;
+       gap: 20px;
+   }
+   #box1{
+       /* border: 1px solid red; */
+       width: 18%;
+       margin-left: 10px;
+       line-height: 25px;
+   }
+   #links{
+      display: inline-block;
+      padding-left: 10px;
+   }
+   #playstore{
+       margin-left: 10px;
+       width: 200px;
+   }
+  #legit_images_div{
+      
+   
+   display: flex;
+   margin-left: 40%;
+   width: 20%;
+   gap: 30px;
+   margin-top: 10px;
+  }
+  #iso{
+      width : 90%
+  }
+  #iso_text{
+   text-align: center;
+   margin-top: 10px;
+  }
+  #end_text{
+      color: #536971;
+  }
+
+/*----------------------------*/

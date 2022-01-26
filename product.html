@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | 1mg</title>
+    <link rel="shortcut icon"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBmBrwcvhTRneBMR3UZua9Is46Pl33fMMvdkhB86BC0WEkyxpI9FYnNBp2aSwDEvdpQw0&usqp=CAU" alt="logo">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/product.css">
+
+</head>
+<body>
+
+    <div id="nav">
+        <div id="cart_count"></div>
+    </div>
+    <br>
+    <hr>
+    <h2>Tata 1mg Products</h2>
+    <hr>
+    <div id="sort_div">Sort 
+    <select id="sort">
+        <option value="Low" id="sortl">Low - High</option>
+        <option value="High" id="sorth">High - Low</option>
+    </select>
+</div>
+    <div id="products_display"></div>
+
+    <div id="footer"></div>
+</body>
+</html>
+
+<script type="module">
+
+let navbar_div = document.getElementById("nav");
+
+import navbar from "./components/navbar.js";
+navbar_div.innerHTML = navbar()
+
+import footer from "./components/footer.js"
+
+let foot = document.getElementById("footer");
+foot.innerHTML = footer(); 
+
+
+let arr =JSON.parse(localStorage.getItem('medicines')) || [];
+let obj = [{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893673/wvl115zyvhgv9hmn5eby.jpg",
+    name : '1mg Vitamin C+Vitamin D3, Zinc and Amla Extract Chewable Tablet',
+    small:'bottle of 60 tablets',
+    rating : 4.3,
+    price: 120
+},
+{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324194/gc3u9gfc331wtsipnljl.jpg",
+    name : 'Tata 1mg Calcium + Vitamin D3, Zinc, Magnesium and Alfalfa Tablets for Joint Health & Immunity',
+    small:'bottle of 60 tablets',
+    rating : 4.1,
+    price: 220
+},
+{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1641378789/rbaugppr9gb507pafj1k.jpg",
+    name : 'Tata 1mg BIS Approved FFP2 N95 Mask - Head Loop 2 Mask',
+    small:'box of 2 masks',
+    rating : 4.5,
+    price: 300
+},
+{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1642508036/wtr1cpntuka5ugtayvgd.jpg",
+    name : "Tata 1mg Women's Multivitamin, Zinc, Vitamin C, Calcium, Vitamin D, and Iron  Immunity Booster Tablet",
+    small:'bottle of 60 tablets',
+    rating : 4.2,
+    price: 508
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1642507827/fwram2p7rbkoigjg6zas.jpg",
+    name : "Salmon Omega 3 Fish Oil Capsule",
+    small:'bottle of 60 tablets',
+    rating : 4.3,
+    price: 507
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1638444070/nwhioxrxmwjkaxitryag.jpg",
+    name : "Tata 1mg BIS Approved FFP2 N95 Mask for Kids 5 Mask",
+    small:'bottle of 5 Masks',
+    rating : 4.7,
+    price: 244
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631892302/bpstjff7hzg9uecj54n7.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'box of 400 gm Powder',
+    rating : 4,
+    price: 444
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324126/ue6wi2sqdbabrosmezmm.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'bottle of 60 tablets',
+    rating : 4,
+    price: 494
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324126/ue6wi2sqdbabrosmezmm.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'bottle of 60 tablets',
+    rating : 4,
+    price: 494
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324363/asydocau7dvbzayxel1u.jpg",
+    name : "Tata 1mg CoQ 10 Tablet 99% Ubiquinone with Zinc, Omega 3 & L-Arginine for Heart Health",
+    small:'strip of 10 tablets',
+    rating : 4.5,
+    price: 294
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1600563934/cropped/jfnya3gelqastes2dbco.png",
+    name : "1mg Shilajit Pure Natural Extract 500mg Capsule",
+    small:'bottle of 60 capsules',
+    rating : 4.5,
+    price: 194
+},
+{
+    url : "		https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1600967453/cropped/ppv7uvfpp28qqqeyazvv.pngg",
+    name : "1mg Milk Thistle Capsules for Liver Detox, 70% Silymarin with Dandelion & Ginger",
+    small:'bottle of 60 capsules',
+    rating : 4.7,
+    price: 394
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893739/w9ntwsvaccla3shbjogm.jpg",
+    name : "1mg Iron + Zinc with Folic Acid, Vitamin B12 and L-Lysine, Maximum Strength Tablet",
+    small:'bottle of 10 capsules',
+    rating : 4.4,
+    price: 594
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893797/cghnrnf8ed1e11rla3pm.jpg",
+    name : "1mg Waterless Face Wash with Aloe Vera, Witch Hazel, Prebiotics, Menthol and Active Silver Nanoparticles for Germ Protection",
+    small:'bottle of 100 ml Face Wash',
+    rating : 4.9,
+    price: 504
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1601308550/cropped/o7mnm6jsfwkimiqwnxjp.png",
+    name : "1mg Waterless Face Wash with Aloe Vera, Witch Hazel, Prebiotics, Menthol and Active Silver Nanoparticles for Germ Protection",
+    small:'1mg Giloy 500mg Capsule',
+    rating : 4.4,
+    price: 224
+},
+{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893404/zzomsiruvmjjqwvrlciq.jpg",
+    name : "1mg Cold Pressed Giloy Tulsi Juice Natural Immunity Booster Enriched with Tulsi",
+    small:'bottle of 500 ml Juice',
+    rating : 3.4,
+    price: 324
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1638444070/nwhioxrxmwjkaxitryag.jpg",
+    name : "Tata 1mg BIS Approved FFP2 N95 Mask for Kids 5 Mask",
+    small:'bottle of 5 Masks',
+    rating : 4.7,
+    price: 244
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631892302/bpstjff7hzg9uecj54n7.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'box of 400 gm Powder',
+    rating : 4,
+    price: 444
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324126/ue6wi2sqdbabrosmezmm.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'bottle of 60 tablets',
+    rating : 4,
+    price: 494
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324126/ue6wi2sqdbabrosmezmm.jpg",
+    name : "1mg Diabetes Nutrition Mix Vanilla",
+    small:'bottle of 60 tablets',
+    rating : 4,
+    price: 494
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1637324363/asydocau7dvbzayxel1u.jpg",
+    name : "Tata 1mg CoQ 10 Tablet 99% Ubiquinone with Zinc, Omega 3 & L-Arginine for Heart Health",
+    small:'strip of 10 tablets',
+    rating : 4.5,
+    price: 294
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1600563934/cropped/jfnya3gelqastes2dbco.png",
+    name : "1mg Shilajit Pure Natural Extract 500mg Capsule",
+    small:'bottle of 60 capsules',
+    rating : 4.5,
+    price: 194
+},
+{
+    url : "		https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1600967453/cropped/ppv7uvfpp28qqqeyazvv.pngg",
+    name : "1mg Milk Thistle Capsules for Liver Detox, 70% Silymarin with Dandelion & Ginger",
+    small:'bottle of 60 capsules',
+    rating : 4.7,
+    price: 394
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893739/w9ntwsvaccla3shbjogm.jpg",
+    name : "1mg Iron + Zinc with Folic Acid, Vitamin B12 and L-Lysine, Maximum Strength Tablet",
+    small:'bottle of 10 capsules',
+    rating : 4.4,
+    price: 594
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893797/cghnrnf8ed1e11rla3pm.jpg",
+    name : "1mg Waterless Face Wash with Aloe Vera, Witch Hazel, Prebiotics, Menthol and Active Silver Nanoparticles for Germ Protection",
+    small:'bottle of 100 ml Face Wash',
+    rating : 4.9,
+    price: 504
+},
+{
+    url : "	https://onemg.gumlet.io/image/upload/a_ignore,w_38…auto/v1601308550/cropped/o7mnm6jsfwkimiqwnxjp.png",
+    name : "1mg Waterless Face Wash with Aloe Vera, Witch Hazel, Prebiotics, Menthol and Active Silver Nanoparticles for Germ Protection",
+    small:'1mg Giloy 500mg Capsule',
+    rating : 4.4,
+    price: 224
+},
+{
+    url : "https://onemg.gumlet.io/image/upload/a_ignore,w_38…_auto,f_auto/v1631893404/zzomsiruvmjjqwvrlciq.jpg",
+    name : "1mg Cold Pressed Giloy Tulsi Juice Natural Immunity Booster Enriched with Tulsi",
+    small:'bottle of 500 ml Juice',
+    rating : 3.4,
+    price: 324
+}
+
+]
+arr.push(obj);
+//console.log('arr:', arr);
+
+localStorage.setItem('medicines',JSON.stringify(arr));
+
+
+
+let products = JSON.parse(localStorage.getItem('medicines')) || [];
+
+
+let display = document.getElementById("products_display") 
+let prod = products[0]
+
+product(prod);
+
+// window.addEventListener('load',function(){
+
+// product(prod);
+// })
+
+function product(prod){
+    prod.map(function(el){
+   // console.log('prod:', prod)
+   
+
+        let div = document.createElement('div')
+
+        let image = document.createElement("img")
+        image.src = el.url;
+
+        let name = document.createElement("p");
+        name.textContent =`Tab : ${el.name}` ;
+        
+        let desc = document.createElement("small") 
+        desc.textContent = el.small
+
+        let price = document.createElement("p");
+        price.textContent = `Price : ₹ ${el.price}/-`;
+
+        let ratings = document.createElement("p") 
+        ratings.textContent = `Ratings : ${el.rating}`;
+
+        let button = document.createElement("button");
+        button.textContent = "Add to Cart";
+        button.setAttribute('id',"add_to_cart");
+
+        button.addEventListener('click',function(){
+            btnFunc(el)
+        });
+
+
+        let cartbtn = document.createElement("button");
+        cartbtn.textContent = "Go to cart";
+        cartbtn.setAttribute('id',"add_to_cart");
+
+        cartbtn.addEventListener('click',function(){
+            cartbtnFunc(el)
+        });
+
+        div.append(image,name,desc,ratings,price,button,cartbtn);
+
+        display.append(div);
+    })
+}
+
+
+
+let cartArr = JSON.parse(localStorage.getItem('finalCart')) || [];
+
+
+let cart_count = document.getElementById("cart_count");
+cart_count.textContent = cartArr.length;
+
+
+//Add to cart
+function btnFunc(el){
+
+    cartArr.push(el)
+
+    localStorage.setItem('finalCart',JSON.stringify(cartArr));
+    
+
+    cart_count.textContent = cartArr.length;
+}
+
+
+//go to cart
+
+function cartbtnFunc(el){
+    window.location.href = "cart.html";
+}
+
+
+//sort
+document.getElementById("sortl").addEventListener('click',function(){
+    for(var i = 0; i < prod.length; i++){
+    prod[i].sort(function(a,b){
+           console.log('prod:', prod[i])
+           return a.price - b.price;
+    
+    })
+}
+    console.log('arrso;',arr[0])
+   // product(prod);
+})
+
+document.getElementById("sorth").addEventListener('click',function(){
+    products.sort(function(a,b){
+            return b.price - a.price;product(prod);
+product(prod);
+        console.log('prodsort:', prod)
+        })
+        
+})
+    
+    
+    
+</script>
