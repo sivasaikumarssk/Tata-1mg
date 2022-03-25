@@ -17,7 +17,6 @@ Product page
 cart
 ![2022-01-22 (3)](https://user-images.githubusercontent.com/83528936/159986208-c4e5d7e7-4b71-4fb6-aa81-1d755214964b.png)
 
-![2022-01-22 (4)](https://user-images.githubusercontent.com/83528936/159986101-ee1e9b39-02ab-4fc3-83c8-35168d18756d.png)
 
 
 
