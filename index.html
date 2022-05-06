@@ -9,6 +9,24 @@
      <link rel="shortcut icon"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBmBrwcvhTRneBMR3UZua9Is46Pl33fMMvdkhB86BC0WEkyxpI9FYnNBp2aSwDEvdpQw0&usqp=CAU" alt="logo">
   
      <link rel="stylesheet" href="./styles/navbar.css">
+     <style>
+
+        #goTop {
+            display: none; 
+            background-color: white; 
+            color: black; 
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px; 
+            right: 1400px; 
+            z-index: 99; 
+            padding: 10px; 
+            border-radius: 30px;
+            font-size: 18px; 
+            border: 1px solid black;
+        }
+
+     </style>
 
 </head>
 <body>
@@ -534,6 +552,10 @@ Tata 1mg health products
 
 <!--------------------tata products------------------->
 <hr>
+
+<button onclick="topFunc()" id="goTop">🔝</button>
+
+
 <div id="footer_div">
 
 </div>
@@ -686,4 +708,33 @@ product(prod)
 function divClick(){
     window.location.href = 'product.html';
 }
+</script>
+
+<script>
+
+//go Top button
+
+let topButton = document.getElementById("goTop");
+  
+window.onscroll = function(){
+
+scrollFunction();
+
+}
+
+function scrollFunction(){
+
+if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+  topButton.style.display = "block";
+}else{
+  topButton.style.display = "none";
+}
+
+}
+
+  function topFunc(){
+    document.documentElement.scrollTop = 0;
+
+  }
+
 </script>
