@@ -27,6 +27,9 @@
 </div>
     <div id="products_display"></div>
 
+    <button onclick="topFunc()" id="goTop">🔝</button>
+
+
     <div id="footer"></div>
 </body>
 </html>
@@ -351,6 +354,29 @@ product(prod);
         
 })
     
-    
-    
+</script>
+
+<script>
+    let topButton = document.getElementById("goTop");
+  
+  window.onscroll = function(){
+  
+  scrollFunction();
+  
+  }
+  
+  function scrollFunction(){
+  
+  if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+    topButton.style.display = "block";
+  }else{
+    topButton.style.display = "none";
+  }
+  
+  }
+  
+    function topFunc(){
+      document.documentElement.scrollTop = 0;
+  
+    }
 </script>
